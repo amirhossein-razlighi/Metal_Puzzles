@@ -1,6 +1,5 @@
 import mlx.core as mx
 from utils import MetalKernel, MetalProblem
-import matplotlib.pyplot as plt
 
 def map_spec(a: mx.array):
     return a + 10
