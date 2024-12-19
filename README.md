@@ -16,7 +16,7 @@ from utils import MetalKernel, MetalProblem
 
 Implement a "kernel" (GPU function) that adds 10 to each position of the array `a` and stores it in the array `out`.  You have 1 thread per position.
 
-<img src="imgs/metal_puzzles_map.png" height="500">
+<img src="imgs/metal_puzzles_map.png">
 
 My solution's output visualization:
 
@@ -26,7 +26,7 @@ My solution's output visualization:
 
 Implement a kernel that takes two arrays `a` and `b`, adds each element together, and stores the result in the output array `out`. You have 1 thread per position.
 
-<img src="imgs/metal_puzzles_zip.png" height="500">
+<img src="imgs/metal_puzzles_zip.png">
 
 My solution's output visualization:
 
@@ -36,7 +36,7 @@ My solution's output visualization:
 
 Implement a kernel that adds 10 to each position of `a` and stores it in `out`. You have more threads than positions.
 
-<img src="imgs/metal_puzzles_guard.png" height="500">
+<img src="imgs/metal_puzzles_guard.png">
 
 My solution's output visualization:
 
@@ -48,7 +48,7 @@ Implement a kernel that adds 10 to each position of `a` and stores it in `out`. 
 
 **Note:** All memory in Metal is represented as a 1D array, so direct 2D indexing is not supported.
 
-<img src="imgs/metal_puzzles_map_2D.png" height="500">
+<img src="imgs/metal_puzzles_map_2D.png">
 
 My solution's output visualization:
 
@@ -58,7 +58,7 @@ My solution's output visualization:
 
 Implement a kernel that adds `a` and `b` and stores it in `out`. Inputs `a` and `b` are arrays. You have more threads than positions.
 
-<img src="imgs/metal_puzzles_broadcast.png" height="500">
+<img src="imgs/metal_puzzles_broadcast.png">
 
 My solution's output visualization:
 
@@ -68,7 +68,7 @@ My solution's output visualization:
 
 Implement a kernel that adds 10 to each position of `a` and stores it in `out`. You have fewer threads per threadgroup than the size of `a`, but more threads than positions.
 
-<img src="imgs/metal_puzzles_threadgroups.png" height="500">
+<img src="imgs/metal_puzzles_threadgroups.png">
 
 My solution's output visualization:
 
@@ -78,7 +78,7 @@ My solution's output visualization:
 
 Implement the same kernel in 2D. You have fewer threads per threadgroup than the size of `a` in both directions, but more threads than positions in the grid.
 
-<img src="imgs/metal_puzzles_threadgroup_2D.png" height="500">
+<img src="imgs/metal_puzzles_threadgroup_2D.png">
 
 My solution's output visualization:
 
@@ -89,7 +89,7 @@ Implement a kernel that adds 10 to each position of `a` and stores it in `out`. 
 
 **Warning**: Each threadgroup can only have a *constant* amount of threadgroup memory that the threads can read and write to. After writing to threadgroup memory, you need to call `threadgroup_barrier(mem_flags::mem_threadgroup)` to ensure that threads are synchronized. In this puzzle we add the `header` variable as a new parameter to the `MetalKernel` object, which simply defines values outside of the kernel body (often used for header imports).
 
-<img src="imgs/metal_puzzles_threadgroup_memory.png" height="500">
+<img src="imgs/metal_puzzles_threadgroup_memory.png">
 
 My solution's output visualization:
 
