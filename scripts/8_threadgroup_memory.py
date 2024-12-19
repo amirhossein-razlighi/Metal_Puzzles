@@ -1,6 +1,11 @@
 import mlx.core as mx
 from utils import MetalKernel, MetalProblem
 
+
+def map_spec(a: mx.array):
+    return a + 10
+
+
 def shared_test(a: mx.array):
     header = """
         constant uint THREADGROUP_MEM_SIZE = 4;
@@ -16,7 +21,7 @@ def shared_test(a: mx.array):
             threadgroup_barrier(mem_flags::mem_threadgroup);
         }
 
-        // FILL ME IN (roughly 1-3 lines)
+        out[i] = shared[local_i] + 10;
     """
 
     kernel = MetalKernel(
@@ -29,6 +34,7 @@ def shared_test(a: mx.array):
 
     return kernel
 
+
 SIZE = 8
 a = mx.ones(SIZE)
 output_shape = (SIZE,)
@@ -36,10 +42,11 @@ output_shape = (SIZE,)
 problem = MetalProblem(
     "Threadgroup Memory",
     shared_test,
-    [a], 
+    [a],
     output_shape,
-    grid=(SIZE,1,1), 
-    threadgroup=(4,1,1),
-    spec=map_spec
+    grid=(SIZE, 1, 1),
+    threadgroup=(4, 1, 1),
+    spec=map_spec,
 )
 problem.show()
+problem.check()

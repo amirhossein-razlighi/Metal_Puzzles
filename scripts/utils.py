@@ -147,8 +147,6 @@ class MetalProblem:
                 return 
 
             print("Failed Tests.")
-            for e in x:
-                print(e)
             print("Yours:", x)
             print("Spec :", y)
 
